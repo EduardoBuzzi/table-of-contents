@@ -32,21 +32,23 @@ body {
   min-height: 100vh;
 }
 #toc__table-of-contents {
-  border: 1px solid #03bcff;
-  position: relative;
-  margin-top: 2rem;
+  --border: 1px solid #03bcff;
+  --margin: calc(2rem + 32px) 0 32px!important;
+  --width: 100%;
+  --color: red;
 }
 #toc__table-of-contents::before {
   content: 'Table of Contents';
   display: block;
   position: absolute;
-  top: -1.9em;
+  bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: #03bcff;
   padding: 0.2em 1.5em;
   text-transform: uppercase;
   color: #242424;
+  text-align: center;
   font-size: 0.8em;
   font-weight: 700;
   border-radius: 0.5em 0.5em 0 0;

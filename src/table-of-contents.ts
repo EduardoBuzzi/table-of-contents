@@ -21,7 +21,6 @@ function createTOC(options: Options = {}) {
     const headings = findHeadings(options.article, options.headers as string)
     const headingStack: {element: HTMLElement, level: number}[] = [];
 
-
     headings.forEach((heading) => {
         const level = parseInt(heading.tagName[1], 10);
 

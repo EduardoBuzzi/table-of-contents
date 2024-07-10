@@ -15,23 +15,22 @@ export default defineConfig({
         //   // regex: /^_/,
         //   debug: false,
         // },
-        reserved: ['setupConditionalFields', 'ConditionalField'],
+        reserved: ['createTOC'],
         // keep_classnames: true,
         // keep_fnames: true,
       }
     },
     lib: {
-      entry: './src/conditional-fields.ts',
-      name: 'conditional-fields',
-      fileName: (format) => `conditional-fields.${format}.js`,
+      entry: './src/table-of-contents.ts',
+      name: 'table-of-contents',
+      fileName: (format) => `table-of-contents.${format}.js`,
       formats: ['umd'],
     },
     rollupOptions: {
       output: {
         banner: `/*! ${pkg.name} - v${pkg.version} */\n`,
         globals: {
-          'setupConditionalFields': 'setupConditionalFields',
-          'ConditionalField': 'ConditionalField',
+          'createTOC': 'createTOC',
         },
       },
     }
