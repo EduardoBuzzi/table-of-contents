@@ -1,19 +1,14 @@
+import { Options } from './types.ts'
 import styles from './table-of-contents.css?inline'
 import tableOfContents from './table-of-contents.html?raw'
-
-type Options = {
-    article?: HTMLElement | string
-    headers?: string
-    title?: string
-    position?: 'beforefirstheading' | 'afterfirstheading' | 'afterfirstblock' | 'top' | 'bottom'
-}
 
 function createTOC(options: Options = {}) {
     options = Object.assign({}, {
         article: document.body,
         headers: 'h1, h2, h3, h4, h5, h6',
-        title: 'Conteúdo',
-        position: 'beforefirstheading'
+        title: 'Content',
+        position: 'beforefirstheading',
+        index: true
     }, options)
 
     const template = document.createElement('template')
@@ -24,64 +19,49 @@ function createTOC(options: Options = {}) {
     tocContainer.querySelector('.toc__title')!.textContent = options.title as string
 
     const headings = findHeadings(options.article, options.headers as string)
+    const headingStack: {element: HTMLElement, level: number}[] = [];
 
-    let levelMap: { [key: number]: number } = {};  // Map to keep track of heading levels
-    let currentList = tocList;
 
-    headings.forEach(heading => {
+    headings.forEach((heading) => {
         const level = parseInt(heading.tagName[1], 10);
 
         if (!heading.id) {
             heading.id = heading.textContent?.trim().toLowerCase().replace(/\s+/g, '-') as string;
         }
 
-        // Update levelMap
-        if (!levelMap[level]) {
-            levelMap[level] = 0;
+        while (headingStack.length && headingStack[headingStack.length - 1].level >= level) {
+            headingStack.pop();
         }
-        levelMap[level]++;
-
-        // Reset lower levels in the map
-        Object.keys(levelMap).forEach(key => {
-            if (parseInt(key) > level) {
-                levelMap[parseInt(key)] = 0;
-            }
-        });
-
-        const numbering = Object.keys(levelMap)
-            .filter(key => parseInt(key) <= level)
-            .map(key => levelMap[parseInt(key)])
-            .join('.');
 
         const listItem = document.createElement("li");
-        if(level > 2) listItem.style.marginLeft = `${(level - 1) * 10}px`;
-
         const link = document.createElement("a");
-        link.href = `#${heading.id}`;
-        link.textContent = `${numbering}. ${heading.textContent}`;
+        // link.href = `#${heading.id}`;
         link.addEventListener('click', function (event) {
             event.preventDefault();
             heading.scrollIntoView({ behavior: 'smooth' });
-            history.pushState(null, '', `#${heading.id}`);
+            link.classList.add('toc__link-visited');
+            // history.pushState(null, '', `#${heading.id}`);
         });
+        link.textContent = `${heading.textContent}`;
         listItem.appendChild(link);
-
-        // Adjust current list based on heading level
-        if (level > currentList.dataset.level) {
-            const nestedList = document.createElement("ol");
-            nestedList.dataset.level = level.toString();
-            currentList.lastElementChild?.appendChild(nestedList);
-            currentList = nestedList;
-        } else if (level < currentList.dataset.level) {
-            while (level < parseInt(currentList.dataset.level)) {
-                currentList = currentList.parentElement?.closest("ol") || tocList;
+        
+        if (headingStack.length) {
+            let parentList = headingStack[headingStack.length - 1].element.querySelector("ol");
+            if (!parentList) {
+                parentList = document.createElement("ol");
+                headingStack[headingStack.length - 1].element.appendChild(parentList);
             }
+            parentList.appendChild(listItem);
+        } else {
+            tocList.appendChild(listItem);
         }
 
-        currentList.appendChild(listItem);
+        headingStack.push({element: listItem, level: level});
     });
+    tocContainer.appendChild(tocList);
 
-    // Insert the TOC before the first heading
+    options.index && addIndexes(tocContainer)
+
     insertTOC()
 
     addUtilityClasses()
@@ -126,6 +106,29 @@ function createTOC(options: Options = {}) {
         }
     }   
 
+    function addIndexes(toc: HTMLElement) {
+        const rootOl = toc.querySelector('ol');
+        if (rootOl) {
+            addIndex(rootOl, '');
+        }
+
+        function addIndex(ol: HTMLOListElement, prefix: string) {
+            const items = ol.children;
+            for (let i = 0; i < items.length; i++) {
+                const li = items[i] as HTMLLIElement;
+                const index = `${prefix}${i + 1}`;
+                const a = li.querySelector('a');
+                if (a) {
+                    a.textContent = `${index}. ${a.textContent}`;
+                }
+                const nestedOl = li.querySelector('ol');
+                if (nestedOl) {
+                addIndex(nestedOl, `${index}.`);
+                }
+            }
+        }
+    }
+
     function addUtilityClasses() {
         if (!document.getElementById('toc-utility-styles')) {
             const style = document.createElement('style')
@@ -134,11 +137,8 @@ function createTOC(options: Options = {}) {
             document.head.appendChild(style)
         }
     }
-
-    
 }
 
-createTOC({
-    article: 'article'
-});
-
+if (typeof (window) !== 'undefined') {
+	window.createTOC = createTOC
+}

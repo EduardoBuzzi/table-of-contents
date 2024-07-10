@@ -7,12 +7,17 @@
     font-size: 1.2em!important;
     margin: 0 0 10px!important;
 }
+#toc__table-of-contents ol.toc__list{
+    padding-left: 0!important;
+}
 #toc__table-of-contents ol {
-    /* padding-left: 10px!important; */
-    padding-left: 0px!important;
+    padding-left: 10px!important;
     margin: 0!important;
     list-style-type: none!important;
 }
 #toc__table-of-contents a.toc__link-visited {
     filter: brightness(0.8);
+}
+#toc__table-of-contents a{
+    cursor: pointer;
 }

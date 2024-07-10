@@ -5,6 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Table of Contents</title>
+    <script type="module" src="/src/page/page.ts"></script>
   </head>
   <body>
     <div id="app">
@@ -12,12 +13,14 @@
       <div style="text-align: center; margin: auto; width: 100%; display: block;">
         <img draggable="false" width="64" height="64" src="/logo.svg" class="logo" alt="Logo" />
       </div>
-      <h1>Table of Contents</h1>
+      <h1 class="title">Table of Contents</h1>
 
       <article>
+        <h1>Lorem Ipsum H1</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
+        
         <h2>Lorem Ipsum H2</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
@@ -25,6 +28,12 @@
         <h2>Lorem Ipsum H2</h2>
         <p>Suspendisse potenti. Sed sit amet urna vel libero suscipit ultrices. Nullam luctus nunc in urna consequat, nec pellentesque nunc cursus. Integer euismod tincidunt urna, at suscipit nulla sagittis a.</p>
         
+        <h3>Lorem Ipsum H3</h3>
+        <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
+        <h3>Lorem Ipsum H3</h3>
+        <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
+        <h3>Lorem Ipsum H3</h3>
+        <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
         <h3>Lorem Ipsum H3</h3>
         <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
         
@@ -36,7 +45,6 @@
         
         <h5>Lorem Ipsum H5</h5>
         <p>Morbi vitae lectus sed orci placerat sollicitudin non sed est. Sed aliquam, eros a condimentum auctor, neque ex tincidunt orci, sit amet cursus nisi odio a tortor.</p>
-        
         <p>Etiam vel scelerisque quam, id volutpat neque. Suspendisse ut sapien nisi. Vestibulum lacinia risus a magna aliquam, in convallis magna varius. Nulla facilisi.</p>
         
         <h2>Another H2 Heading</h2>
@@ -53,9 +61,23 @@
         
         <h5>Another H5 Heading</h5>
         <p>Morbi vitae lectus sed orci placerat sollicitudin non sed est. Sed aliquam, eros a condimentum auctor, neque ex tincidunt orci, sit amet cursus nisi odio a tortor.</p>
+        
+        <h5>Another H5 Heading</h5>
+        <p>Morbi vitae lectus sed orci placerat sollicitudin non sed est. Sed aliquam, eros a condimentum auctor, neque ex tincidunt orci, sit amet cursus nisi odio a tortor.</p>
       </article>
     </div>
-    <script type="module" src="/src/page/page.ts"></script>
-    <script type="module" src="/src/table-of-contents.ts"></script>
+    
+    <script defer type="module" src="/src/table-of-contents.ts"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        createTOC({
+          article: 'article',
+          title: 'Summary',
+          index: true,
+          headers: ['h3', 'h5']
+        })
+      })
+    </script>
   </body>
 </html>
