@@ -31,13 +31,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-#toc__table-of-contents {
-  --border: 1px solid #03bcff;
+#toc__container {
+  /* --border: 1px solid #03bcff;
   --margin: calc(2rem + 32px) 0 32px!important;
-  --width: 100%;
-  --color: red;
+  --width: 100%; */
 }
-#toc__table-of-contents::before {
+#toc__container::before {
   content: 'Table of Contents';
   display: block;
   position: absolute;
@@ -70,7 +69,7 @@ body {
   transition: filter 300ms;
   text-align: center;
 }
-#app:has(a:hover ) .logo {
+#app:has(#toc__container:hover ) .logo {
   filter: drop-shadow(0 0 2em #367fff);
 }
 .logo:hover {

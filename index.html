@@ -13,10 +13,11 @@
       <div style="text-align: center; margin: auto; width: 100%; display: block;">
         <img draggable="false" width="64" height="64" src="/logo.svg" class="logo" alt="Logo" />
       </div>
+
       <h1 class="title">Table of Contents</h1>
 
       <article>
-        <h1>Lorem Ipsum H1</h1>
+        <!-- <h1>Lorem Ipsum H1</h1> -->
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
@@ -25,12 +26,12 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         
-        <h2>Lorem Ipsum H2</h2>
+        <h2>Lorem&nbsp;&nbsp;&nbsp; Ipsum H2</h2>
         <p>Suspendisse potenti. Sed sit amet urna vel libero suscipit ultrices. Nullam luctus nunc in urna consequat, nec pellentesque nunc cursus. Integer euismod tincidunt urna, at suscipit nulla sagittis a.</p>
         
         <h3>Lorem Ipsum H3</h3>
         <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
-        <h3>Lorem Ipsum H3</h3>
+        <h3 id="custom-id">Lorem Ipsum H3</h3>
         <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
         <h3>Lorem Ipsum H3</h3>
         <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
@@ -75,7 +76,25 @@
           article: 'article',
           title: 'Summary',
           index: true,
-          headers: ['h3', 'h5']
+          // headers: ['h3', 'h5']
+          styles: {
+            titleColor: 'white',
+            titleSize: '1.2em',
+            linkColor: '#03bcff',
+            linkSize: '0.9em',
+            lineHeight: '1.5em',
+            indexColor: 'white',
+            listPadding: '14px',
+            // listStyleType: 'circle',
+            // listStylePosition: 'inside',
+            // listMarkerColor: 'white',
+            background: '#242424',
+            border: '1px solid #03bcff',
+            borderRadius: '5px',
+            padding: '14px 18px 18px',
+            margin: '32px 0',
+            width: '100%',
+          }
         })
       })
     </script>
