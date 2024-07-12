@@ -20,6 +20,7 @@ export type Options = {
         listStyleType?: string
         listStylePosition?: string
         listMarkerColor?: string
+        toggleColor?: string
         background?: string
         border?: string
         borderRadius?: string

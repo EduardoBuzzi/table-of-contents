@@ -31,11 +31,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-#toc__container {
-  /* --border: 1px solid #03bcff;
-  --margin: calc(2rem + 32px) 0 32px!important;
-  --width: 100%; */
-}
 #toc__container::before {
   content: 'Table of Contents';
   display: block;

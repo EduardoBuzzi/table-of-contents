@@ -1,20 +1,21 @@
 # table-of-contents
- 
+
 #toc__container {
-    --title-color: white;
-    --title-size: 1rem;
-    --link-color: #01bdff;
-    --link-size: 90%;
-    --line-height: 1.4;
-    --index-color: white;
-    --list-padding: 14px;
-    --list-style-type: circle;
-    --list-style-position: inside;
-    --list-marker-color: white;
-    --background: #242424;
-    --border: 1px solid #03bcff;
-    --border-radius: 5px;
-    --padding: 14px 18px 18px;
-    --margin: 32px 0;
-    --width: auto;
+    --toc__title-color: white;
+    --toc__title-size: 1rem;
+    --toc__link-color: #01bdff;
+    --toc__link-size: 90%;
+    --toc__line-height: 1.5;
+    --toc__index-color: white;
+    --toc__list-padding: 14px;
+    --toc__list-style-type: circle;
+    --toc__list-style-position: inside;
+    --toc__list-marker-color: white;
+    --toc__toggle-color: #787878;
+    --toc__background: #242424;
+    --toc__border: 1px solid #03bcff;
+    --toc__border-radius: 5px;
+    --toc__padding: 14px 18px 18px;
+    --toc__margin: 32px 0;
+    --toc__width: auto;
 }

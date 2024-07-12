@@ -16,9 +16,18 @@ function createTOC(options: Options = {}) {
 
     const tocContainer = template.content.firstElementChild as HTMLElement
     const tocList = tocContainer.querySelector('.toc__list') as HTMLElement
+
+    const tocToggle = tocContainer.querySelector('.toc__toggle') as HTMLElement
+    tocToggle.addEventListener('click', function (event) {
+        event.preventDefault()
+        tocList.classList.toggle('toc__list-collapsed')
+        tocToggle.classList.toggle('toc__toggle-collapsed')
+        tocToggle.setAttribute('aria-expanded', tocToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true')
+    })
+
     const tocTitle = tocContainer.querySelector('.toc__title') as HTMLElement
     tocTitle.textContent = options.title as string
-    tocTitle.style.setProperty('color', 'var(--title-color, revert-layer)');
+    tocTitle.style.setProperty('color', 'var(--toc__title-color, revert-layer)');
 
     const headings = findHeadings(options.article, options.headers as string)
     const headingStack: {element: HTMLElement, level: number}[] = [];
@@ -28,11 +37,11 @@ function createTOC(options: Options = {}) {
 
         if (!heading.id) {
             let headingId = heading.textContent?.trim().toLowerCase()
-            .normalize('NFD') // normalize to decomposed form
-            .replace(/[\u0300-\u036f]/g, '') // remove unicode combining diacritical marks
-            .replace(/[^a-z0-9\s-]/g, '') // remove non-word characters
-            .replace(/\s+/g, '-') // change spaces to hyphens
-            .replace(/-+/g, '-') as string // Remove hífens duplicados
+                .normalize('NFD') // normalize to decomposed form
+                .replace(/[\u0300-\u036f]/g, '') // remove unicode combining diacritical marks
+                .replace(/[^a-z0-9\s-]/g, '') // remove non-word characters
+                .replace(/\s+/g, '-') // change spaces to hyphens
+                .replace(/-+/g, '-') as string // Remove hífens duplicados
 
             if (document.getElementById(headingId)) {
                 let i = 2;
@@ -49,8 +58,8 @@ function createTOC(options: Options = {}) {
 
         const listItem = document.createElement("li");
         const link = document.createElement("a");
-        link.style.setProperty('color', 'var(--link-color, revert-layer)');
-        link.style.setProperty('font-size', 'var(--link-size, 90%)');
+        link.style.setProperty('color', 'var(--toc__link-color, revert-layer)');
+        link.style.setProperty('font-size', 'var(--toc__link-size, 90%)');
         link.href = `#${heading.id}`;
         link.addEventListener('click', function (event) {
             event.preventDefault();
@@ -79,7 +88,7 @@ function createTOC(options: Options = {}) {
     options.index && addIndexes(tocContainer)
     options.styles && addStyles(tocContainer, options.styles)
 
-    insertTOC()
+    insertTOC(headings)
 
     addUtilityClasses()
 
@@ -96,13 +105,13 @@ function createTOC(options: Options = {}) {
         return baseElement.querySelectorAll(headers);
     }
 
-    function insertTOC() {
+    function insertTOC(headings: NodeListOf<Element>) {
         const article = typeof options.article === 'string' ? document.querySelector(options.article) : options.article;
         if (!article) {
             return;
         }
 
-        const firstHeading = article.querySelector(options.headers as string);
+        const firstHeading = headings[0] as HTMLElement | null;
 
         switch (options.position) {
             case 'beforefirstheading':
@@ -148,7 +157,7 @@ function createTOC(options: Options = {}) {
 
     function addStyles(element: HTMLElement, styles: { [key: string]: string }) {
         Object.keys(styles).forEach(key => {
-            const cssProperty = `--${camelToSnakeCase(key)}`
+            const cssProperty = `--toc__${camelToSnakeCase(key)}`
             element.style.setProperty(cssProperty, styles[key]);
         });
 
