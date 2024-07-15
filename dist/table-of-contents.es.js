@@ -188,7 +188,6 @@ class TableOfContents {
         window.addEventListener("load", () => {
           setTimeout(() => {
             currentHeading.scrollIntoView({ behavior: "instant" });
-            console.log("scrolling to current heading");
           }, 1);
         });
       }
