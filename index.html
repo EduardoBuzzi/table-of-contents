@@ -19,6 +19,9 @@
       <article>
         <!-- <h1>Lorem Ipsum H1</h1> -->
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
+
+        <div id="custom-position"></div>
+        
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
         
@@ -31,10 +34,13 @@
         
         <h3>Lorem Ipsum H3</h3>
         <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
+        
         <h3 id="custom-id">Lorem Ipsum H3</h3>
         <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
+        
         <h3>Lorem Ipsum H3</h3>
         <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
+        
         <h3>Lorem Ipsum H3</h3>
         <p>Quisque cursus, mi a consequat sagittis, magna ligula luctus odio, sit amet tincidunt sapien augue a justo. Donec at nibh ut nisl bibendum sollicitudin. Fusce vitae dolor vel orci bibendum pulvinar.</p>
         
@@ -73,8 +79,9 @@
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         createTOC({
-          article: 'article',
-          title: 'Summary',
+          content: 'article',
+          title: 'Contents',
+          // position: '#custom-position',
           index: true,
           // headers: ['h2', 'h3'],
           styles: {

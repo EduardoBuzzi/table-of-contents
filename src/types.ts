@@ -5,10 +5,10 @@ declare global {
 }
 
 export type Options = {
-    article?: HTMLElement | string
+    content?: HTMLElement | string
     headers?: string
     title?: string
-    position?: 'beforefirstheading' | 'afterfirstheading' | 'afterfirstblock' | 'top' | 'bottom'
+    position?: 'beforefirstheading' | 'afterfirstheading' | 'afterfirstblock' | 'top' | 'bottom' | string
     index?: boolean
     styles?: {
         titleColor?: string
