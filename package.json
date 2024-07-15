@@ -1,7 +1,7 @@
 {
   "name": "table-of-contents",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,5 +12,10 @@
     "terser": "^5.31.1",
     "typescript": "^5.5.3",
     "vite": "^5.3.3"
-  }
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/table-of-contents.umd.js",
+  "module": "./dist/table-of-contents.es.js"
 }

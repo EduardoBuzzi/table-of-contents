@@ -7,7 +7,7 @@ export class TableOfContents {
     private container: HTMLElement
     private list: HTMLElement
     private toggleButton: HTMLElement
-    private headings: NodeListOf<Element>
+    private headings: Element[]
 
     constructor(options: Options = {}) {
         this.options = Object.assign({}, {
@@ -51,7 +51,7 @@ export class TableOfContents {
             content = this.options.content as HTMLElement
         }
 
-        let headings = content.querySelectorAll(this.options.headers as string)
+        let headings = Array.from(content.querySelectorAll(this.options.headers as string)).filter((heading) => heading.textContent && heading.textContent.trim() !== '');
         if (!headings.length) {
             throw new Error('Heading elements not found')
         }
@@ -70,6 +70,7 @@ export class TableOfContents {
         const tocTitle = this.container.querySelector('.toc__title') as HTMLElement
         tocTitle.textContent = this.options.title as string
         tocTitle.style.setProperty('color', 'var(--toc__title-color, revert-layer)')
+        tocTitle.style.setProperty('font-weight', 'var(--toc__title-weight, revert-layer)')
 
         // setup the toggle button
         this.toggleButton.addEventListener('click', this.toggleTOC.bind(this))
@@ -82,7 +83,7 @@ export class TableOfContents {
         this.toggleButton.setAttribute('aria-expanded', this.toggleButton.getAttribute('aria-expanded') === 'true' ? 'false' : 'true')
     }
 
-    private populateTOC(headings: NodeListOf<Element>) {
+    private populateTOC(headings: Element[]) {
         const headingStack: { element: HTMLElement, level: number }[] = []
 
         headings.forEach((heading) => {
@@ -137,6 +138,7 @@ export class TableOfContents {
         const link = document.createElement("a")
         link.style.setProperty('color', 'var(--toc__link-color, revert-layer)')
         link.style.setProperty('font-size', 'var(--toc__link-size, 90%)')
+        link.style.setProperty('font-weight', 'var(--toc__link-weight, revert-layer)')
         link.href = `#${heading.id}`
         link.addEventListener('click', (event) => {
             event.preventDefault()
@@ -148,7 +150,7 @@ export class TableOfContents {
         return link
     }
 
-    private insertTOC(headings: NodeListOf<Element>) {
+    private insertTOC(headings: Element[]) {
         const firstHeading = headings[0] as HTMLElement | null
         const parent = firstHeading?.parentElement
 

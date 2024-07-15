@@ -18,6 +18,7 @@
 
       <article>
         <!-- <h1>Lorem Ipsum H1</h1> -->
+        <h2></h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget venenatis ex. Nullam auctor, tortor nec pretium convallis, massa turpis tristique urna, et vestibulum nunc nulla in neque.</p>
 
         <div id="custom-position"></div>
@@ -80,15 +81,17 @@
       document.addEventListener('DOMContentLoaded', () => {
         createTOC({
           content: 'article',
-          title: 'Contents',
+          // title: 'Contents',
           // position: '#custom-position',
-          index: true,
-          // headers: ['h2', 'h3'],
+          // index: false,
+          // headers: 'h2, h3',
           styles: {
             titleColor: 'white',
             titleSize: '1.2em',
+            titleWeight: '500',
             // linkColor: '#03bcff',
             linkSize: '0.9em',
+            linkWeight: '500',
             lineHeight: '1.5em',
             indexColor: 'white',
             listPadding: '14px',

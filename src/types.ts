@@ -13,8 +13,10 @@ export type Options = {
     styles?: {
         titleColor?: string
         titleSize?: string
+        titleWeight?: string
         linkColor?: string
         linkSize?: string
+        linkWeight?: string
         lineHeight?: string
         listPadding?: string
         listStyleType?: string

@@ -31,7 +31,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-#toc__container::before {
+.toc__container::before {
   content: 'Table of Contents';
   display: block;
   position: absolute;
@@ -64,7 +64,7 @@ body {
   transition: filter 300ms;
   text-align: center;
 }
-#app:has(#toc__container:hover ) .logo {
+#app:has(.toc__container:hover ) .logo {
   filter: drop-shadow(0 0 2em #367fff);
 }
 .logo:hover {

@@ -1,4 +1,4 @@
-#toc__container {
+.toc__container {
     display: inline-block;
     position: relative;
     background: var(--toc__background, rgb(0 0 0 / 3%));
@@ -8,12 +8,12 @@
     margin: var(--toc__margin, 32px 0);
     width: var(--toc__width, auto);
 }
-#toc__container .toc__header {
+.toc__container .toc__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-#toc__container .toc__header .toc__toggle{
+.toc__container .toc__header .toc__toggle{
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -25,60 +25,60 @@
     transition: all 0.3s ease;
     margin-left: 10px;
 }
-#toc__container .toc__header .toc__toggle.toc__toggle-collapsed {
+.toc__container .toc__header .toc__toggle.toc__toggle-collapsed {
     transform: rotate(180deg);
 }
-#toc__container .toc__title {
+.toc__container .toc__title {
     font-size: var(--toc__title-size, 100%)!important;
     margin: 0!important;
     padding: 0 !important;
     line-height: unset;
 }
-#toc__container ol.toc__list {
+.toc__container ol.toc__list {
     margin: 6px 0 0 0!important;
     padding: 0!important;
-    line-height: var(--toc__line-height, revert-layer);
     transition: var(--toc__transition, all 0.3s ease);
 }
-#toc__container ol {
+.toc__container ol {
+    line-height: var(--toc__line-height, revert-layer)!important;
     padding-left: var(--toc__list-padding, 14px)!important;
     margin: 0!important;
     list-style-type: var(--toc__list-style-type, none)!important;
     list-style-position: var(--toc__list-style-position, inside)!important;
 }
-#toc__container ol ::marker {
+.toc__container ol ::marker {
     color: var(--toc__list-marker-color, var(--toc__link-color, currentColor));
 }
-#toc__container a.toc__link-visited {
+.toc__container a.toc__link-visited {
     opacity: 0.7;
 }
-#toc__container a {
+.toc__container a {
     cursor: pointer;
     box-shadow: none !important;
     border: none !important;
     text-decoration: none !important;
 }
-#toc__container .toc__list a:hover {
+.toc__container .toc__list a:hover {
     text-decoration: none!important;
     border-bottom: 1px dotted !important;
 }
-#toc__container .toc__list-index {
+.toc__container .toc__list-index {
     color: var(--toc__index-color, currentColor);
 }
 
 /* Toggle animations */
 
-#toc__container ol.toc__list.toc__list-collapsed {
+.toc__container ol.toc__list.toc__list-collapsed {
     display: none!important;
 }
-#toc__container ol.toc__list {
+.toc__container ol.toc__list {
     animation: toc__appear 0.5s ease-in-out 1;
     transition-property: display, max-height;
     transition-duration: 0.5s;
     transition-behavior: allow-discrete;
     max-height: 1000px;
 }
-#toc__container ol.toc__list.toc__list-collapsed {
+.toc__container ol.toc__list.toc__list-collapsed {
     animation: toc__disappear 0.5s ease-in-out 1;
     max-height: 0;
 }
