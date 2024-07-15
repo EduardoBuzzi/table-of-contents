@@ -34,6 +34,7 @@ export class TableOfContents {
         this.options.index && this.addIndexes()
         this.options.styles && this.addStyles(this.container, this.options.styles)
         this.addUtilityClasses()
+        this.scrollToCurrentHeading()
     }
 
     private getElements(){
@@ -52,7 +53,7 @@ export class TableOfContents {
 
         let headings = content.querySelectorAll(this.options.headers as string)
         if (!headings.length) {
-            throw new Error('Headings element not found')
+            throw new Error('Heading elements not found')
         }
 
         return {
@@ -209,6 +210,20 @@ export class TableOfContents {
             const cssProperty = `--toc__${this.camelToSnakeCase(key)}`
             element.style.setProperty(cssProperty, styles[key])
         })
+    }
+
+    private scrollToCurrentHeading() {
+        if (window.location.hash) {
+            const currentHeading = document.getElementById(window.location.hash.slice(1))
+            if (currentHeading && currentHeading.tagName.match(/^H[1-6]$/)) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        currentHeading.scrollIntoView({ behavior: 'instant' })
+                        console.log('scrolling to current heading');
+                    }, 1)
+                })
+            }
+        }
     }
 
     private camelToSnakeCase(str: string): string {
