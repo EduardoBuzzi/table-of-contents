@@ -19,24 +19,24 @@ A TypeScript library to dynamically create a Table of Contents based on the head
 
 ## Installation
 
-Initially, you can download the file located at 'dist/table-of-contents.umd.js' and import it into your page like this:
+Initially, you can download the file located at '[dist/table-of-contents.umd.js](dist/table-of-contents.umd.js)' and import it into your page like this:
 ```html
-<script src="/js/table-of-contents.umd.js" type="text/javascript" charset="utf-8"></script>
+<script src="/path/to/table-of-contents.umd.js"></script>
 ```
 Or you can simply copy the file contents and place them inside a script tag:
 ```html
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
 //... paste here
 </script>
 ```
-The library will be available in the global window context as createTOC.
+The library will be available in the global window context as `createTOC`.
 
 ## Usage
 
 Create the Table of Contents by accessing this function:
 
 ```html
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
     document.addEventListener('DOMContentLoaded', () => {
         window.createTOC();
     });
@@ -45,7 +45,7 @@ Create the Table of Contents by accessing this function:
 
 ### Options
 
-The 'createTOC' function accepts an options object to customize the Table of Contents. 
+The `createTOC` function accepts an options object to customize the Table of Contents. 
 Here are the available options:
 
 | Option | Type | Default | Description |
